@@ -33,6 +33,40 @@ function tt4c_require_first_level_directory_named_like_files_automatically( stri
 	}
 }
 
+// Function to require all PHP files recursively in a given directory
+function tt4c_require_all_PHP_files_recursively($directory) {
+    // Create a RecursiveIteratorIterator for the given directory
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+
+    // Use a RegexIterator to filter out only PHP files
+    $phpFiles = new RegexIterator($iterator, '/\.php$/');
+
+    // Loop through each PHP file and require_once to include it
+    foreach ($phpFiles as $phpFile) {
+        require_once $phpFile->getPathname();
+    }
+}
+
+// Function to get the roles of the currently logged-in user
+function tt4c_get_current_user_roles() {
+    // Check if the user is logged in
+    if (is_user_logged_in()) {
+
+        // Get the current user object
+        $user = wp_get_current_user();
+
+        // Get the roles assigned to the user as an array
+        $roles = (array) $user->roles;
+
+        // Return the array of user roles
+        return $roles; // This will return an array
+
+    } else {
+        // If the user is not logged in, return an empty array
+        return array();
+    }
+}
+
 // Set the current directory path
 $current_dir_path = __DIR__;
 
