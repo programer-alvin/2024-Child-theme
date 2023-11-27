@@ -11,10 +11,7 @@
     ],
     "acf": {
         "mode": "preview",
-        "renderTemplate": "template.php",
-        "postTypes": [
-            "post"
-        ]
+        "renderTemplate": "template.php"
     },
     "styles": [
         {

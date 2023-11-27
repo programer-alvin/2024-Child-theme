@@ -2,8 +2,13 @@
 add_action(
 	'acf/init',
 	function() {
+		// Get current user roles using a custom function
 		$roles = tt4c_get_current_user_roles();
-		if ( in_array( 'administrator', $roles ) ) {// show if criteria is met
+
+		// Check if the user has the 'administrator' role (show if criteria is met)
+		if ( in_array( 'administrator', $roles ) ) {
+
+			// Add options page for specific user roles
 			acf_add_options_page(
 				array(
 					'page_title' => 'Settings for Specific User Roles',
@@ -13,6 +18,7 @@ add_action(
 				)
 			);
 
+			// Add sub-page under 'Settings for Specific User Roles'
 			acf_add_options_page(
 				array(
 					'page_title'  => 'Sub Page',

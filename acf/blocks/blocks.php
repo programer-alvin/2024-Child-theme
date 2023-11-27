@@ -14,7 +14,7 @@ function tt4c_register_blocks_automatically() {
 }
 add_action( 'init', 'tt4c_register_blocks_automatically' );
 
-//working on field groups.
+// working on field groups.
 
 /**
  * Checks if block name is contained in field group location rules.
